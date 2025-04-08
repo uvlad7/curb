@@ -16,3 +16,5 @@ vendor/
 .bundle/
 .idea
 *.lock
+.rake_tasks~
+.yardoc/
