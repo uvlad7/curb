@@ -31,10 +31,14 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/taf2/curb'
   s.rdoc_options = ['--main', 'README.markdown']
 
+  s.metadata = {
+    'changelog_uri' => 'https://github.com/taf2/curb/blob/master/ChangeLog.md'
+  }
+
   <% if ENV['BINARY_PACKAGE'] %>
   s.platform = Gem::Platform::CURRENT
   <% else %>
   s.platform = Gem::Platform::RUBY
   <% end %>
-  s.licenses = ['MIT']
+  s.licenses = ['Ruby']
 end

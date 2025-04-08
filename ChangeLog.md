@@ -1,4 +1,23 @@
 # Change Log
+## 1.0.9
+* Fix for proxy headers see #457
+* Add CI for Ruby 2.7, Ruby 3.3 and 3.4
+## 1.0.8
+* PUT and PATCH requests now behave like POST requests with multipart form data supporting http_post, http_put, and http_patch with PostField arguments
+## 1.0.7
+* Clean up easy handle after failing to add to a multi handle
+* With newer versions of libcurl we can use curl_easy_escape instead of curl_escape, this should improve character encoding support
+* When available use curl_multi_wait for greater system compatibility, users of libcurl 7.28.0 and later should benefit from this change
+* Improve easy handle cloning to deep copy related lists, headers, cookies , proxy_headers, ftp_commands and resolve list.
+* Updating test suite and internal tools for ruby 3.4 
+* CURLOPT_COOKIELIST support see examples:
+```ruby
+easy.setopt(Curl::CURLOPT_COOKIELIST, "Set-Cookie: c1=v1; domain=localhost; expires=#{expires.httpdate};")
+easy.setopt(Curl::CURLOPT_COOKIELIST, [ ['.localhost', 'TRUE', '/', 'FALSE', 0, 'session', '42'].join("\t"),
+                                        ['.localhost', 'TRUE', '/', 'FALSE', 0, 'session2', '84'].join("\t"), '', ].join("\n") )
+```
+* Add :on_missing to callbacks supported by Curl::Multi.http
+
 ## 1.0.6
 * Fix for PUT request length calculation
   - see: #451
